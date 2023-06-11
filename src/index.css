@@ -1,13 +1,133 @@
-body {
+:root {
+  --dark-color: #171717;
+  --secondary-color: #3c948b;
+  --offwhite: #f4f4f4;
+  --light-dark-color: #3f3f3f;
+}
+
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.btn {
+  padding: 10px 17px;
+  border: 1px solid var(--dark-color);
+  background-color: var(--offwhite);
+  color: var(--offwhite);
+  margin: 1rem 0;
+  font-size: 20px;
+  cursor: pointer;
 }
+
+.btn:hover {
+  color: var(--dark-color);
+}
+
+.search__btn {
+  display: block;
+  border-radius: 20px;
+  background-color: var(--secondary-color);
+}
+
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.navbar {
+  padding: 10px;
+  background: var(--light-dark-color);
+}
+
+.navbar__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__links {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.navbar__links a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--offwhite);
+  margin-right: 3rem;
+  font-size: 20px;
+}
+
+.navbar__links a:hover {
+  color: var(--secondary-color);
+}
+
+.search__form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search__form > input {
+  padding: 10px 17px;
+  border: 1px solid var(--dark-color);
+  background: var(--offwhite);
+  color: var(--dark-color);
+  font-size: 20px;
+  outline: none;
+  border-radius: 20px;
+}
+
+.search__form > input:focus {
+  border: 1px solid var(--secondary-color);
+  box-shadow: 0 0 1px 1px rgba(60, 148, 139, 0.5);
+}
+
+.shows {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  row-gap: 30px;
+}
+
+.shows__item {
+  width: 170px;
+  text-align: center;
+  margin: 1rem 0;
+  background: var(--secondary-color);
+}
+
+.shows__item-link {
+  text-decoration: none;
+  color: var(--offwhite);
+
+}
+
+.shows__item-img{
+  width: 170px;
+  height: 250px;
+  object-fit: cover;
+}
+
+
+.shows__item-text {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(244, 244, 244, 0.5);
+}
+
+.shows__item-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 170px;
+  padding-bottom: 5px;
+}
+
