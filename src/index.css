@@ -1,8 +1,13 @@
-:root {
+/* :root {
   --dark-color: #171717;
   --secondary-color: #3c948b;
   --offwhite: #f4f4f4;
   --light-dark-color: #3f3f3f;
+  --dark-blue-color: #1E2538;
+  --white-color: #ffffff;
+  --yellow-color: #F2F60F;
+  --light-green-color: #89CB36;
+  --blue-color: #3657CB;
 }
 
 * {
@@ -38,7 +43,7 @@ body {
 }
 
 .container {
-  max-width: 1170px;
+  max-width: 1110px;
   margin: 0 auto;
 }
 
@@ -99,6 +104,7 @@ body {
 }
 
 .shows__item {
+  justify-self: center;
   width: 170px;
   text-align: center;
   margin: 1rem 0;
@@ -130,4 +136,191 @@ body {
   width: 170px;
   padding-bottom: 5px;
 }
+ */
 
+ :root {
+  --dark-blue-color: #1E2538;
+  --white-color: #ffffff;
+  --yellow-color: #F2F60F;
+  --light-green-color: #89CB36;
+  --blue-color: #3657CB;
+}
+
+@font-face {
+  font-family: 'Qanelas';
+  src: url(fonts/Qanelas-Black.ttf);
+}
+
+body {
+  font-family: 'Qanelas';
+  font-size: 16px;
+  font-weight: 400;
+  background-color: var(--dark-blue-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  padding-top: 23px;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+}
+
+.nav-list-item {
+  margin-right: 52px;
+  list-style: none;
+}
+
+.nav-list-item-link {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--white-color);
+}
+
+.nav-list-item-link:hover {
+  color: var(--blue-color);
+  transition: all .2s ease-in-out;
+}
+
+.header-input {
+  border-radius: 10px;
+  padding: 10px 10px;
+  font-size: 20px;
+
+  border: none;
+  background: rgba(57, 63, 84, 0.8);
+  color: var(--white-color);
+}
+
+.header-input:focus {
+  outline: none;
+}
+
+.films-section{
+  margin-top: 50px;
+}
+
+.section-title {
+  font-size: 65px;
+  font-weight: 900;
+  color: var(--white-color);
+}
+
+.films {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 23px;
+}
+
+.film-card {
+  max-width: 340px;
+  position: relative;
+}
+
+.film-poster {
+
+  width: 340px;
+  border-radius: 10px;
+}
+
+
+.film-title {
+  margin-top: 11px;
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white-color);
+}
+
+.film-genres {
+  color: var(--yellow-color);
+  font-weight: 400;
+}
+
+.film-rating-good {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  background-color: red;
+  top: 12px;
+  right: 12px;
+  border-radius: 5px;
+}
+
+.film-rating-bad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  background-color: var(--light-green-color);
+  top: 12px;
+  right: 12px;
+  border-radius: 5px;
+}
+
+
+.rating {
+  font-weight: 700;
+  color: var(--white-color);
+}
+
+.show-section{
+  margin-top: 80px;
+}
+
+.show {
+  display: grid;
+  grid-template-columns: 150px 400px 620px;
+  gap: 50px;
+}
+
+.show-photo {
+  width: 400px;
+  border-radius: 10px;
+  grid-column: 2/3;
+}
+
+/* .show-info {
+  margin-top: 10px;
+} */
+
+.show-info-name {
+  font-size: 65px;
+  font-weight: 900;
+  color: var(--white-color);
+}
+
+.show-info-params {
+  display: grid;
+  grid-template-columns: 192px 530px;
+  margin-top: 30px;
+  gap: 50px;
+  align-items: center;
+
+}
+
+.show-info-param{
+  font-size: 18px;
+  color: var(--white-color);
+}
