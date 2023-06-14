@@ -291,7 +291,7 @@ a {
 
 .show {
   display: grid;
-  grid-template-columns: 150px 400px 620px;
+  grid-template-columns: 50px 400px 620px;
   gap: 50px;
 }
 
@@ -323,4 +323,74 @@ a {
 .show-info-param{
   font-size: 18px;
   color: var(--white-color);
+}
+
+/* CrewSection ShowDetail */
+
+.crew-section{
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+.section-title {
+  font-size: 65px;
+  color: var(--white-color)
+}
+
+.crew {
+  margin-top: 40px;
+  display: grid;
+  justify-items: flex-start;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 50px;
+}
+
+.crew-item {
+  width: 250px;
+}
+
+.crew-img {
+  width: 248px;
+}
+
+.crew-name {
+  margin-top: 16px;
+  margin-bottom: 12px;
+  color: var(--white-color);
+}
+
+.crew-type {
+  color: var(--yellow-color);
+}
+
+.cast-section {
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+/* CastSection ShowDetail */
+
+.cast {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 50px;
+}
+
+.cast-item {
+  width: 248px;
+}
+
+.cast-img {
+  width: 248px;
+}
+
+.cast-name {
+  margin-top: 16px;
+  margin-bottom: 12px;
+  color: var(--white-color);
+}
+
+.cast-type {
+  color: var(--yellow-color);
 }
