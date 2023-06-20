@@ -61,7 +61,7 @@ const ShowDetail = () => {
         console.log(show.data)
       setShowData({
           ...show.data,
-          summary: show.data.summary.replace(regex, '')
+          summary: show.data.summary?.replace(regex, '')
         })
       }
   }
@@ -80,7 +80,7 @@ const ShowDetail = () => {
         name={name}
         image={image?.medium ? image.medium : noimage}
         rating={rating?.average}
-        summary={summary}
+        summary={summary ? summary : `Информация отсутствует`}
         status={status}
         genres={genres}
         premiered={premiered}

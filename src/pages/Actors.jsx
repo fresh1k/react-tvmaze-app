@@ -7,6 +7,7 @@ import noimage from '../images/noimage.jpg'
 
 const Actors = () => {
 
+
   const [data, setData] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [total, setTotal] = useState(0)
@@ -74,7 +75,9 @@ const Actors = () => {
           onChange={onPageChange}
           hideOnSinglePage={true}
           showSizeChanger={false}
-          />
+        />
+
+
         <div className="films">
           {data.map((item) => {
             return <ActorListItems

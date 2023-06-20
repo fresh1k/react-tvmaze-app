@@ -251,32 +251,27 @@ a {
 .film-genres {
   color: var(--yellow-color);
   font-weight: 400;
+  margin-bottom: 10px;
 }
 
-.film-rating-good {
+.film-rating {
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   width: 60px;
   height: 30px;
-  background-color: red;
   top: 12px;
   right: 12px;
-  border-radius: 5px;
+  border-radius: 5px
 }
 
 .film-rating-bad {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 60px;
-  height: 30px;
+  background-color: red;
+}
+
+.film-rating-good {
   background-color: var(--light-green-color);
-  top: 12px;
-  right: 12px;
-  border-radius: 5px;
 }
 
 
