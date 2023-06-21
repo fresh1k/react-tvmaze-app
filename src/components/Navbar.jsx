@@ -18,7 +18,7 @@ const Navbar = () => {
         <ul className="nav-list">
           <li className="nav-list-item"><Link to='/' className="nav-list-item-link">Фильмы</Link></li>
           <li className="nav-list-item"><Link to='/people' className="nav-list-item-link">Актёры</Link></li>
-          <li className="nav-list-item"><Link to='/favorites' className="nav-list-item-link">Избранное<span>({ movieFavorites.length })</span></Link></li>
+          <li className="nav-list-item"><Link to='/favorites' className="nav-list-item-link">Избранное<span>({ movieFavorites?.length })</span></Link></li>
         </ul>
         <input
           className="header-input"
