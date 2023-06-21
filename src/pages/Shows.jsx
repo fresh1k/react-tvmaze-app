@@ -3,6 +3,8 @@ import axios from 'axios'
 import { Pagination  } from 'antd';
 import ShowListItems from '../components/ShowListItems'
 import noimage from '../images/noimage.jpg'
+import FilterMovie from '../components/FilterMovie/FilterMovie';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // const SEARCH_API = ` https://api.tvmaze.com/search/shows?q=${searchData}`
 
@@ -14,6 +16,8 @@ const Shows = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [total, setTotal] = useState(0)
   const [loading, setLoading] = useState(false)
+  const [filtered, setFiltered] = useState([])
+  const [activeGenre, setActiveGenre] = useState('')
 
 
   const getData = async (pageNumber) => {
@@ -24,10 +28,10 @@ const Shows = () => {
       const list = response.data.map((item) => {
         return {
           ...item,
-          key: item.id
         }
       })
       setData(list)
+      setFiltered(list)
       setTotal(response.data.length)
     }
     setLoading(false)
@@ -58,12 +62,6 @@ const Shows = () => {
     }
   }
 
-  // const addFavouriteMovie = (movie) => {
-  //   const newFavouriteMovie = [...favorites, movie]
-  //   console.log(newFavouriteMovie)
-  //   setFavorites(newFavouriteMovie)
-  // }
-
 
 
   useEffect(() => {
@@ -83,20 +81,22 @@ const Shows = () => {
           hideOnSinglePage={true}
           showSizeChanger={false}
         />
-
-          <div className="films">
-          {data.map((item) => {
-            return <ShowListItems
-              key={item.id}
-              id={item.id}
-              name={item.name}
-              image={item.image?.medium ? item.image.medium : noimage}
-              rating={item.rating?.average ? item.rating?.average : 0.0}
-              genres={item.genres ? `${item.genres.join(', ')}` : 'No genres'}
-              data={item}
-            />
-          })}
-        </div>
+        <FilterMovie data={ data } setFiltered={setFiltered} activeGenre={activeGenre} setActiveGenre={setActiveGenre} />
+          <motion.div className="films">
+          <AnimatePresence>
+            {filtered.map((item) => {
+              return <ShowListItems
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                image={item.image?.medium ? item.image.medium : noimage}
+                rating={item.rating?.average ? item.rating?.average : 0.0}
+                genres={item.genres ? `${item.genres.join(', ')}` : 'No genres'}
+                data={item}
+              />
+            })}
+          </AnimatePresence>
+        </motion.div>
       </section>
     </div>
   )

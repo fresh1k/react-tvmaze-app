@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
 import FavoritesContext from '../context/FavoritesContext'
+import { motion } from 'framer-motion';
 const ShowListItems = ({ id, name, image, rating, genres, data }) => {
   const [isFavorite, setIsFavorite] = useState(false)
   const { toggleFavoriteMovie } = useContext(FavoritesContext)
@@ -21,7 +22,12 @@ const ShowListItems = ({ id, name, image, rating, genres, data }) => {
   
 
   return (
-      <div className="film-card">
+    <motion.div
+      layout
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{opacity: 0}}
+      className="film-card">
       <Link to={`/shows/${id}`}>
         <img className="film-poster" src={image} alt="film-poster" />
         <h2 className="film-title">{name}</h2>
@@ -43,7 +49,7 @@ const ShowListItems = ({ id, name, image, rating, genres, data }) => {
         icon={isFavorite ? faHeartSolid : faHeartRegular }
         size='lg'
         style={{ color: '#005eff', cursor: 'pointer' }} />
-    </div>
+    </motion.div>
   )
 }
 
