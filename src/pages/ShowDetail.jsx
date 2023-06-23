@@ -26,15 +26,6 @@ const ShowDetail = () => {
       `https://api.tvmaze.com/shows/${id}`
     ]
     setLoading(true)
-    // const response = await axios.get(`https://api.tvmaze.com/shows/${id}`)
-    // if (response.data) {
-    //   console.log(response.data)
-    //   setData({
-    //     ...response.data,
-    //     summary: response.data.summary.replace(regex, '')
-    //   })
-    // }
-    // setLoading(false)
     const response = await axios.all(endpoints.map((endpoint) => axios.get(endpoint)))
     const [crew, cast, show] = response
     if (crew.data) {
@@ -86,36 +77,51 @@ const ShowDetail = () => {
         premiered={premiered}
         ended={ended}
       />
-      <section className="crew-section" >
-        <p className="section-title">Создатели</p>
-        <div className="crew">
+
+
       {
-        crewData.map((item) => {
-          return <ShowDetailCrew
-            key={item.id}
-            id={item.id}
-            name={item.name}
-            image={item.image?.medium ? item.image.medium : noimage}
-            type={item.type}
-          />
-        })
-          }
-          </div>
-      </section>
-      <section className="cast-section">
-        <p className="section-title">Актёры</p>
-        <div className="cast">
-          {castData.map((item) => {
-            return <ShowDetailCast
-            key={item.id}
-            id={item.id}
-            name={item.name}
-            image={item.image?.medium ? item.image.medium : noimage}
-            character={item.character.name}  
-            />
-          }) }
-        </div>
-      </section>
+        crewData.length > 0 ?
+          <section className="crew-section" >
+            <p className="section-title">Создатели</p>
+            <div className="crew">
+              {
+                crewData.map((item) => {
+                  return <ShowDetailCrew
+                    key={item.id}
+                    id={item.id}
+                    name={item.name}
+                    image={item.image?.medium ? item.image.medium : noimage}
+                    type={item.type}
+                  />
+                })
+              }
+            </div>
+          </section>
+          :
+          null
+      }
+
+      {
+        castData.length > 0 ?
+          <section className="cast-section">
+            <p className="section-title">Актёры</p>
+            <div className="cast">
+              {castData.map((item) => {
+                return <ShowDetailCast
+                  key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  image={item.image?.medium ? item.image.medium : noimage}
+                  character={item.character.name}
+                />
+              })}
+            </div>
+          </section>
+        :
+        null
+      }
+
+
     </div>
   )
 }

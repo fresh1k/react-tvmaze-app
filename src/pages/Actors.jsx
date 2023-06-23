@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ActorListItems from '../components/ActorListItems'
-import { Input, Pagination } from 'antd';
+import { Pagination } from 'antd';
 import { useNavigate } from "react-router-dom";
 import noimage from '../images/noimage.jpg'
+import ClipLoader from 'react-spinners/ClipLoader';
+
 
 const Actors = () => {
 
@@ -46,50 +48,40 @@ const Actors = () => {
   }, [])
 
   return (
-    // <div>
-    //   <div className='container'>
-    //   <h1>Shows</h1>
-    //   <Input placeholder="Press Enter to search something"
-    //     style={{width: '95%', marginLeft: '28px'}}
-    //     value={searchData}
-    //     onChange={(e) => setSearchData(e.target.value)}
-    //     onKeyUp={(e) => e.key === 'Enter' ? navigate(`/search?query=${searchData}`) : null}
-    //   />
-    //     <div className='shows'>
-    //       {data.map((item) => {
-    //         return <ActorListItems
-    //           key={item.id}
-    //           id={item.id}
-    //           name={item.name}
-    //           image={item.image?.medium ? item.image.medium : `https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg`}
-    //         />
-    //       }) }
-    //     </div>
-    //   </div>
-    // </div>
-    <div className='container'>
-      <section className="films-section">
-      <Pagination
-          current={currentPage}
-          total={total}
-          onChange={onPageChange}
-          hideOnSinglePage={true}
-          showSizeChanger={false}
-        />
-
-
-        <div className="films">
-          {data.map((item) => {
-            return <ActorListItems
-              key={item.id}
-              id={item.id}
-              name={item.name}
-              image={item.image?.medium ? item.image.medium : noimage}
-            />
-          }) }
+    <>
+      {loading ? (
+        <div className="loader-container">
+          <ClipLoader color={'#3657CB'} loading={loading} size={50} cssOverride={{border: '8px solid #3657CB'}} />
         </div>
-      </section>
-    </div>
+      ) : (
+        
+        <div className='container'>
+        <section className="films-section">
+          <Pagination
+            current={currentPage}
+            total={total}
+            onChange={onPageChange}
+            hideOnSinglePage={true}
+            showSizeChanger={false}
+          />
+
+
+          <div className="films">
+            {data.map((item) => {
+              return <ActorListItems
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                image={item.image?.medium ? item.image.medium : noimage}
+              />
+            })}
+          </div>
+
+
+          </section>
+        </div>
+      )}
+    </>
   )
 }
 
